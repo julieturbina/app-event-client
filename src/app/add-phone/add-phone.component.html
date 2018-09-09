@@ -1,0 +1,33 @@
+<p>
+  add-phone works!
+</p>
+
+<h1> Add a new phone </h1>
+<a [routerLink]="['']"> Back to list </a>
+
+<form>
+  <fieldset>
+    <legend> Events </legend>
+    <label> Type* </label>
+    <input type="text" [(ngModel)]="newEvent.type" name="type" required />
+
+    <label> Name* </label>
+    <input type="text" [(ngModel)]="newEvent.name" name="name" required />
+
+    <label> Details </label>
+    <input type="text" #detail />
+    <button (click)="addDetail(detail.value); detail.value = ''"> add </button>
+
+    <ul>
+      <li *ngFor="let detail of newEvents.details"> {{ detail }} </li>
+    </ul>
+    <small *ngIf="!newEvent.details.length"> This Event has no details :( </small>
+
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+  </fieldset>
+  <button (click)="submit()"> submit </button>
+</form>
+
+<p> {{ feedback }} </p>
+

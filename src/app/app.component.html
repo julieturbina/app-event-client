@@ -1,19 +1,27 @@
+
+
+
 <app-header></app-header>
 
-
-
+<br>
+  <button (click)="login()"> login </button>
+  <hr>
+  <br>
+  <hr>
+  <button (click)="signup()"> signup </button>
+<br>
 
 <!-- ////BELOW IS WORKING -->
-<h1> Authentication Sample </h1>
+<!-- <h1> Authentication Sample </h1>
 <form *ngIf="!user">
   <h2> Login or Signup </h2>
   <label> Username </label>
-  <input type="text" [(ngModel)]="formInfo.username" name="username" required/>
+  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
   <br>
   <label> Password </label>
-  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+  <input type="password" [(ngModel)]="formInfo.password" name="password"/> -->
 
-  <button (click)="login()"> login </button>
+  <!-- <button (click)="login()"> login </button>
   <button (click)="signup()"> signup </button>
 </form>
 
@@ -26,53 +34,12 @@
   <pre> {{ privateData | json }} </pre>
   <button (click)="logout()"> logout </button>
   <button (click)="getPrivateData()"> Get private data </button>
-</div>
+</div>  -->
 
 <p class="error"> {{ error }} </p>
 
-
-<hr>
-
-
+<app-event-list></app-event-list>
+<app-event-detail></app-event-detail>
+<app-add-phone></app-add-phone>
 <app-footer></app-footer>
 
-
-
-<!-- <router-outlet></router-outlet> -->
-
-<!-- TEST 2 -->
-<!-- 
-<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" ngNativeValidate>
-  <p> Username
-    <input type="text" name="username" [(ngModel)]="username" minlength="6" />
-  </p>
-  <p> Password
-    <input type="password" name="password" [(ngModel)]="password" required />
-  </p>
-  <button type="submit"> signup </button>
-</form> -->
-
-<!-- TEST 3 NOT WORKING !!!!!-->
-<!-- <h3>Test 3</h3>
-
-<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm">
-  <p> Username
-    <input type="text" name="username" [(ngModel)]="username"
-          #myUsername="ngModel" minlength="6" />
-  </p>
-  <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
-    <p class="error" [hidden]="!myUsername.errors.minlength">
-      Username must be at least 6 characters long.
-    </p>
-  </div>
-  <p> Password
-    <input type="password" name="password" [(ngModel)]="password"
-          #myPassword="ngModel" required />
-  </p>
-  <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
-    <p class="error" [hidden]="!myPassword.errors.required">
-      Password is required
-    </p>
-  </div>
-  <button type="submit"> signup </button>
-</form> -->
