@@ -14,7 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
-import { AddPhoneComponent } from './add-phone/add-phone.component';
+import { AddEventComponent } from './add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { AddPhoneComponent } from './add-phone/add-phone.component';
     EventListComponent,
     EventDetailComponent,
     FileSelectDirective,
-    AddPhoneComponent
+    AddEventComponent
   ],
   imports: [
     BrowserModule,
