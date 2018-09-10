@@ -3,7 +3,7 @@
 <div>
   <div *ngFor="let event of event">
     <img [src]="event.image" />
-    <h3> {{ phone.genre }}&nbsp;</h3>
+    <h3> {{ event.genre }}&nbsp;</h3>
     <p> {{ phone.name }} </p>
     <a [routerLink]="['event', events._id]"> View Details </a>
   </div>

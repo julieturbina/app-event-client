@@ -1,7 +1,12 @@
 
+<hr>
+<br>
+<h1> This is the login page start!</h1>
+
 <h1> WELCOME {{ user.username }} </h1>
+
 <form *ngIf="!user">
-  <h2> Login and/or Signup </h2>
+  <h2> LOGIN PAGE WITH ALL THE BELLS AND WHISTLES!!! </h2>
   <label> Username </label>
   <input type="text" [(ngModel)]="formInfo.username" name="username"/>
   <br>
@@ -13,16 +18,16 @@
   <br>
 </div>
   <br>
-<div>
+<!-- <div>
   <br>
   <button type="button" class="btn btn-dark" (click)="signup()"> SIGNUP BUTTON </button>
   <br>
-</div>
+</div> -->
 </form>
 
 <div *ngIf="user">
   <h2> You are now logged in as {{ user.username }}!! </h2>
-  <p> Here's the user object, ok? </p>
+  <p> This is the user object to prove it, ok? </p>
   <pre> {{ user | json }} </pre>
   <p *ngIf="privateData"> Here's some data fetched from a protected API </p>
   <pre> {{ privateData | json }} </pre>
@@ -31,3 +36,8 @@
 </div>
 
 <p class="error"> {{ error }} </p>
+
+<h1> This is the login page end!</h1>
+<br>
+<hr>
+<br>
