@@ -1,3 +1,13 @@
 
 <h2> event-list Works! </h2>
 <a [routerLink]="['event', 42]"> View Details </a>
+
+<h1> Event list </h1>
+<div>
+  <div *ngFor="let event of events">
+    <img [src]="event.image" />
+    <h3> {{ event.genre }} </h3>
+    <p> {{ event.name }} </p>
+  </div>
+</div>
+`,

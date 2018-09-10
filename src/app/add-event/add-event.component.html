@@ -1,22 +1,32 @@
 
+<h1> Event list </h1>
+<div>
+  <div *ngFor="let event of event">
+    <img [src]="event.image" />
+    <h3> {{ phone.genre }}&nbsp;</h3>
+    <p> {{ phone.name }} </p>
+    <a [routerLink]="['event', events._id]"> View Details </a>
+  </div>
+</div>
+
+<!-- 
 <h1> Add a new Event - client</h1>
 <a [routerLink]="['']"> Back to list </a>
-
 <form>
   <fieldset>
     <legend> Events </legend>
-    <label> Type* </label>
+    <label> Type </label>
     <input type="text" [(ngModel)]="newEvent.type" name="type" required />
 
-    <label> Name* </label>
+    <label> Name </label>
     <input type="text" [(ngModel)]="newEvent.name" name="name" required />
 
     <label> Details </label>
-    <input type="text" #detail />
-    <button (click)="addDetail(detail.value); detail.value = ''"> add </button>
+    <input type="text" details />
+    <button (click)="addDetails(details.value); details.value = ''"> add </button>
 
     <ul>
-      <li *ngFor="let detail of newEvents.details"> {{ detail }} </li>
+      <li *ngFor="let details of newEvents.details"> {{ details }} </li>
     </ul>
     <small *ngIf="!newEvent.details.length"> This Event has no details :( </small>
 
@@ -26,4 +36,4 @@
   <button (click)="submit()"> submit </button>
 </form>
 
-<p> {{ feedback }} </p>
+<p> {{ feedback }} </p> -->

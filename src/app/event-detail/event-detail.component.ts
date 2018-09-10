@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EventService } from '../services/event.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-detail.component.css']
 })
 export class EventDetailComponent implements OnInit {
+  event: any;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private eventService: EventService
+  ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.getEventDetails(params['id']);
+    });
   }
 
+  getEventDetails(id) {
+    this.eventService.get(id)
+      .subscribe((event) => {
+        this.event = event;
+      });
+  }
 }

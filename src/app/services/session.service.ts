@@ -9,30 +9,35 @@ import { Observable, throwError } from 'rxjs';
 export class SessionService {
   mainURL:string = "http://localhost:3000";
 
-constructor(private http: Http) { }
+  constructor(private http: Http) { }
+  
+  handleError(e) {
+    return throwError(e.json().message);
+  }
 
-handleError(e) {
-  return throwError(e.json().message);
-}
+  signup(user) {
+    return this.http.post(`${this.mainURL}/signup`, user).pipe(map(res => res.json()),catchError(this.handleError));
+  }
 
-signup(user) {
-  return this.http.post(`${this.mainURL}/signup`, user).pipe(map(res => res.json()),catchError(this.handleError));
-}
+  login(user) {
+    return this.http.post(`${this.mainURL}/login`, user, {withCredentials:true}).pipe(map(res => res.json()), catchError(this.handleError));
+  }
 
-login(user) {
-  return this.http.post(`${this.mainURL}/login`, user).pipe(map(res => res.json()), catchError(this.handleError));
-}
+  logout() {
+    return this.http.post(`${this.mainURL}/logout`, {}, {withCredentials: true}).pipe(map(res => res.json()), catchError(this.handleError));
+  }
 
-logout() {
-  return this.http.post(`${this.mainURL}/logout`, {}).pipe(map(res => res.json()), catchError(this.handleError));
-}
+  isLoggedIn() {
+    return this.http.get(`${this.mainURL}/loggedin`, {withCredentials: true})
+    .pipe(map(res =>
+      res.json()
+    ),
+    catchError(this.handleError)
+  );
+      
+  }
 
-isLoggedIn() {
-  return this.http.get(`${this.mainURL}/loggedin`).pipe(map(res => res.json()),catchError(this.handleError));
-    
-}
-
-getPrivateData() {
-  return this.http.get(`${this.mainURL}/private`).pipe(map(res => res.json()),catchError(this.handleError));
-}
+  getPrivateData() {
+    return this.http.get(`${this.mainURL}/private`, {withCredentials:true}).pipe(map(res => res.json()),catchError(this.handleError));
+  }
 }

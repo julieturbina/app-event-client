@@ -15,6 +15,9 @@ import { FooterComponent } from './footer/footer.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AddEventComponent } from './add-event/add-event.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { AddEventComponent } from './add-event/add-event.component';
     EventListComponent,
     EventDetailComponent,
     FileSelectDirective,
-    AddEventComponent
+    AddEventComponent,
+    SignupComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

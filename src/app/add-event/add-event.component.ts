@@ -1,27 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { FileSelectDirective, FileUploader } from "ng2-file-upload";
+import { NgModule } from '@angular/core';
+import { SessionService } from "../services/session.service";
 
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
   styleUrls: ['./add-event.component.css']
 })
+
 export class AddEventComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
-    url: `/events/`
+    url: `http://localhost:3000/api`, itemAlias: 'file'
   });
 
   newEvent = {
-    type: '',
+    genre: '',
     name: '',
-    details: []
+    brand: '',
+    specs: []
   };
 
-  feedback: string;
+  feedback: string = "";
 
-  constructor() { }
+
+  constructor(private session:SessionService) { }
 
   ngOnInit() {
+      this.session.isLoggedIn()
+      .subscribe(
+        (user) => console.log("LOGG = ", user)
+      );
+
     this.uploader.onSuccessItem = (item, response) => {
       this.feedback = JSON.parse(response).message;
     };
@@ -31,18 +41,31 @@ export class AddEventComponent implements OnInit {
     };
   }
 
-  addDetails(detail) {
-    this.newEvent.details.push(detail);
+  addDetail(detail) {
+    this.newEvent.specs.push(detail);
   }
-
+      
   submit() {
     this.uploader.onBuildItemForm = (item, form) => {
-      form.append('type', this.newEvent.type);
+      form.append('genre', this.newEvent.genre);
       form.append('name', this.newEvent.name);
-      form.append('specs', JSON.stringify(this.newEvent.details));
+      // form.append('info', JSON.stringify(this.newEvent.info));
     };
-
     this.uploader.uploadAll();
   }
-}
 
+  isFormClean(): boolean {
+    console.log('name == type: ', this.newEvent.genre === '' || this.newEvent.genre === '')
+
+    if (this.newEvent.name === '' || this.newEvent.name === '') {
+      return window.confirm(`
+          Unsaved changes.
+          Are you sure you want to quit?
+      `);
+    }
+  
+    return true;
+  }
+
+
+}

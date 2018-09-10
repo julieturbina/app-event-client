@@ -2,3 +2,22 @@
   event-detail works!
 </h2>
 <a [routerLink]="['']"> Back to list </a>
+
+
+<div *ngIf="event">
+  <div class="event-thumbnail">
+    <img height="300" [src]="event.image" />
+  </div>
+
+  <div class="event-info">
+    <h2> {{ event.genre }}&nbsp;</h2>
+    <h3> {{ event.name }} </h3>
+
+    <div *ngIf="event.infos.length">
+      <h4> Features </h4>
+      <ul>
+        <li *ngFor="let spec of event.infos"> {{ info&nbsp;}} </li>
+      </ul>
+    </div>
+  </div>
+</div>
