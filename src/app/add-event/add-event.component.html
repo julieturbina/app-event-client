@@ -1,34 +1,25 @@
 
 <h1> Page to add-events start!!!!!!!!</h1>
-<div>
-  <div *ngFor="let event of event">
-    <img [src]="event.image" />
-    <h3> {{ event.genre }}&nbsp;</h3>
-    <p> {{ phone.name }} </p>
-    <a [routerLink]="['event', events._id]"> View Details </a>
-  </div>
-</div>
 
-<!-- 
-<h1> Add a new Event - client</h1>
 <a [routerLink]="['']"> Back to list </a>
+
 <form>
   <fieldset>
-    <legend> Events </legend>
-    <label> Type </label>
-    <input type="text" [(ngModel)]="newEvent.type" name="type" required />
+    <legend> Event info </legend>
+    <label> Genre </label>
+    <input type="text" [(ngModel)]="newEvent.brand" name="genre" required />
 
     <label> Name </label>
     <input type="text" [(ngModel)]="newEvent.name" name="name" required />
 
-    <label> Details </label>
-    <input type="text" details />
-    <button (click)="addDetails(details.value); details.value = ''"> add </button>
+    <label> Specs </label>
+    <input type="text" #spec />
+    <button (click)="addSpec(spec.value); spec.value = ''"> add </button>
 
     <ul>
-      <li *ngFor="let details of newEvents.details"> {{ details }} </li>
+      <li *ngFor="let spec of newEvent.specs"> {{ specs }} </li>
     </ul>
-    <small *ngIf="!newEvent.details.length"> This Event has no details :( </small>
+    <small *ngIf="!newEvent.specs.length"> This event has no specs :( </small>
 
     <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
 
@@ -36,6 +27,6 @@
   <button (click)="submit()"> submit </button>
 </form>
 
-<p> {{ feedback }} </p> -->
+<p> {{ feedback }} </p>
 <h1> Page to add-events end!!!!!!!!</h1>
 <hr>
