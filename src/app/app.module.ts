@@ -8,6 +8,7 @@ import { FormsModule } from "@angular/forms";
 import { FileSelectDirective } from "ng2-file-upload";
 
 import { SessionService } from "./services/session.service";
+import { EventService } from './services/event.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +19,7 @@ import { AddEventComponent } from './add-event/add-event.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
 
   ],
-  providers: [ SessionService ],
+  providers: [ SessionService ],  //??????EventService add to providers
   bootstrap: [AppComponent]
 })
 export class AppModule { }

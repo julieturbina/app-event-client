@@ -9,11 +9,15 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
+    {path: 'signup', component: SignupComponent},
+    {path: 'login', component: LoginComponent},
     { path: '', component: EventListComponent  },
     { path: 'add', component: AddEventComponent },
     { path: 'add', component: EventListComponent },
     { path: 'event/:id', component: EventDetailComponent },
-    {path: 'signup', component: SignupComponent},
-    {path: 'login', component: LoginComponent},
+    // {path: 'signup', component: SignupComponent},
+    // {path: 'login', component: LoginComponent},
+    {path: '', component:  HomeComponent},
+
     { path: '**', redirectTo: '' }
 ];

@@ -6,36 +6,29 @@
 <h1> WELCOME {{ user.username }} </h1>
 
 <form *ngIf="!user">
-  <h2> LOGIN PAGE WITH ALL THE BELLS AND WHISTLES!!! </h2>
-  <label> Username </label>
-  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
-  <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
-  <div>
-  <br>
-  <button type="button" class="btn btn-dark" (click)="login()"> LOGIN BUTTON </button>
-  <br>
-</div>
-  <br>
-<!-- <div>
-  <br>
-  <button type="button" class="btn btn-dark" (click)="signup()"> SIGNUP BUTTON </button>
-  <br>
-</div> -->
-</form>
-
-<div *ngIf="user">
-  <h2> You are now logged in as {{ user.username }}!! </h2>
-  <p> This is the user object to prove it, ok? </p>
-  <pre> {{ user | json }} </pre>
-  <p *ngIf="privateData"> Here's some data fetched from a protected API </p>
-  <pre> {{ privateData | json }} </pre>
-  <button (click)="logout()"> logout </button>
-  <button (click)="getPrivateData()"> Get private data </button>
-</div>
-
-<p class="error"> {{ error }} </p>
+    <h2> Login or Signup </h2>
+    <label> Username </label>
+    <input type="text" [(ngModel)]="formInfo.username" name="username"/>
+    <br>
+    <label> Password </label>
+    <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+  
+    <button (click)="login()"> login </button>
+    <button (click)="signup()"> signup </button>
+  </form>
+  
+  <div *ngIf="user">
+    <h2> You are now logged in as {{ user.username }}!! </h2>
+    <p> Here's the user object </p>
+    <pre> {{ user | json }} </pre>
+  
+    <p *ngIf="privateData"> Here's some data fetched from a protected API </p>
+    <pre> {{ privateData | json }} </pre>
+    <button (click)="logout()"> logout </button>
+    <button (click)="getPrivateData()"> Get private data </button>
+  </div>
+  
+  <p class="error"> {{ error }} </p>
 
 <h1> This is the login page end!</h1>
 <br>

@@ -12,6 +12,7 @@ export class SignupComponent implements OnInit {
     username: '',
     password: ''
   }
+  formInfo:any={};
 
   error: string;
 
