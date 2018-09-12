@@ -10,7 +10,6 @@ import { EventService } from '../services/event.service';
 })
 export class EventListComponent implements OnInit {
   events: any;
-  phones;
 
   constructor(private event: EventService) { }
 

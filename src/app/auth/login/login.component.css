@@ -1,0 +1,13 @@
+.form-container{
+    margin-top:25%;
+    background: rgba(237, 46, 237, 0.808);
+    padding: 30px;
+    border-radius: 100px;
+    box-shadow: 0 30px 250px rgba(112, 6, 118, 0.345), 0 6px 6px rgba(242, 176, 245, 0.5);
+}
+
+.enter{
+    font-size: 50px;
+    font-size: 48px;
+    text-shadow: 4px 4px 4px #aaa;
+}

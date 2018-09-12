@@ -18,12 +18,11 @@ export class AddEventComponent implements OnInit {
   newEvent = {
     genre: '',
     name: '',
-    brand: '',
+    image: '',
     specs: []
   };
 
   feedback: string = "";
-
 
   constructor(private session:SessionService) { }
 

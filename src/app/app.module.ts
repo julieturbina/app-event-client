@@ -41,8 +41,6 @@ import { HomeComponent } from './home/home.component';
     RouterModule.forRoot(routes),
     FormsModule,
     HttpModule,
-    // FileUploadModule      //recent addition
-
   ],
   providers: [ SessionService, EventService ],  //??????EventService recent addition
   bootstrap: [AppComponent]

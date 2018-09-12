@@ -7,7 +7,7 @@
   <fieldset>
     <legend> Event info </legend>
     <label> Genre </label>
-    <input type="text" [(ngModel)]="newEvent.brand" name="genre" required />
+    <input type="text" [(ngModel)]="newEvent.genre" name="genre" required />
 
     <label> Name </label>
     <input type="text" [(ngModel)]="newEvent.name" name="name" required />
@@ -17,7 +17,7 @@
     <button (click)="addSpec(spec.value); spec.value = ''"> add </button>
 
     <ul>
-      <li *ngFor="let spec of newEvent.specs"> {{ specs }} </li>
+      <li *ngFor="let spec of newEvent.specs"> {{ spec }} </li>
     </ul>
     <small *ngIf="!newEvent.specs.length"> This event has no specs :( </small>
 

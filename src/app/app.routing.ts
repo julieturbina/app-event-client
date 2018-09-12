@@ -12,11 +12,9 @@ export const routes: Routes = [
     {path: 'signup', component: SignupComponent},
     {path: 'login', component: LoginComponent},
     { path: '', component: EventListComponent  },
-    { path: 'add', component: AddEventComponent },
-    { path: 'add', component: EventListComponent },
+    { path: 'add', component: AddEventComponent},
+    { path: 'list', component: EventListComponent },
     { path: 'event/:id', component: EventDetailComponent },
-    // {path: 'signup', component: SignupComponent},
-    // {path: 'login', component: LoginComponent},
     {path: '', component:  HomeComponent},
 
     { path: '**', redirectTo: '' }
