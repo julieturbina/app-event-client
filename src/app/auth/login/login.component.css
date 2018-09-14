@@ -7,7 +7,12 @@
 }
 
 .enter{
-    font-size: 50px;
+    font-family: 'Prata', serif;
     font-size: 48px;
     text-shadow: 4px 4px 4px #aaa;
+}
+
+.login {
+    background-color: rgb(96, 6, 222);
+    padding: 0px;
 }

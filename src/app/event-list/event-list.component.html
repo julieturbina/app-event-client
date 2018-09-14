@@ -1,18 +1,44 @@
 
 <br>
 <h1>This is the event list start!</h1>
-<a [routerLink]="['event', 42]"> View Details </a>
+
 
 <h1> Event list </h1>
-<div>
-  <div *ngFor="let event of events">
-    <img [src]="event.image" />
-    <h3> {{ event.genre }} </h3>
-    <p> {{ event.name }} </p>
-    <p> {{ event.specs }} </p>
-  </div>
+<div class="card" style="width: 125rem;">
+    <div *ngFor="let event of events">
+      <img class="card-img-top"  [src]="event.image" alt="Event" />
+      <div class="card-body">
+      <h3 class="card-title"> {{ event.genre }}&nbsp; </h3>
+      <p class="card-title"> {{ event.name }} </p>
+      <p class="card-title"> {{ event.specs }} </p>
+      <a [routerLink]="['/events', event._id]"> View Event Details </a>
+    </div>
 </div>
+<hr>
+
 `,<h1>This is the event list end!</h1>
 <hr>
 <br>
 <hr>
+
+
+
+<!-- <br>
+<h1>This is the event list start!</h1>
+
+<a [routerLink]="['event', 42]"> View Details </a>
+
+<h1> Event list </h1>
+<div class="card">
+    <div *ngFor="let event of events">
+      <img [src]="event.image" />
+      <h3> {{ event.genre }}&nbsp; </h3>
+      <p> {{ event.name }} </p>
+      <p> {{ event.specs }} </p>
+      <a [routerLink]="['event', event._id]"> View Event Details </a>
+    </div>
+</div>
+`,<h1>This is the event list end!</h1>
+<hr>
+<br>
+<hr> -->

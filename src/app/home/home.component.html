@@ -1,7 +1,6 @@
-<br>
-<h2>Home Page is empty! Will I use it?</h2>
+<div *ngIf="!user">
 
-<hr>
-  
+<app-login></app-login>
+</div>
 
-
+<app-event-list></app-event-list>

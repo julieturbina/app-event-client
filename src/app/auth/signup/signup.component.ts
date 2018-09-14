@@ -5,15 +5,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  providers:[SessionService],
 })
 export class SignupComponent implements OnInit {
-  newUser = {
+  formInfo = {
     username: '',
     password: ''
   }
-  formInfo:any={};
-
+ 
   error: string;
 
   constructor(
@@ -33,11 +33,12 @@ export class SignupComponent implements OnInit {
       )
   }
 
+
   signup(){
-    this.session.signup(this.newUser)
+    this.session.signup(this.formInfo)
       .subscribe(
         user => {
-          this.router.navigate(['/home'])
+          this.router.navigate(['/add'])
         },
         err => {
           console.error(err);
@@ -47,4 +48,3 @@ export class SignupComponent implements OnInit {
   }
 
 }
-

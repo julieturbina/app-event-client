@@ -1,8 +1,6 @@
 
 <h1> Page to add-events start!!!!!!!!</h1>
 
-<a [routerLink]="['']"> Back to list </a>
-
 <form>
   <fieldset>
     <legend> Event info </legend>
@@ -21,7 +19,7 @@
     </ul>
     <small *ngIf="!newEvent.specs.length"> This event has no specs :( </small>
 
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+    <input type="file" name="eventImg" ng2FileSelect [uploader]="uploader" />
 
   </fieldset>
   <button (click)="submit()"> submit </button>

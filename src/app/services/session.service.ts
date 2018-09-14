@@ -8,15 +8,15 @@ import { Observable, throwError } from 'rxjs';
 })
 export class SessionService {
   mainURL:string = "http://localhost:3000";
-
+  tempUser: any = {};
   constructor(private http: Http) { }
   
   handleError(e) {
-    return throwError(e.json().message);
+    return throwError(console.log(e));
   }
 
   signup(user) {
-    return this.http.post(`${this.mainURL}/signup`, user).pipe(map(res => res.json()),catchError(this.handleError));
+    return this.http.post(`${this.mainURL}/signup`, user, {withCredentials:true}).pipe(map(res => res.json()),catchError(this.handleError));
   }
 
   login(user) {
@@ -24,13 +24,16 @@ export class SessionService {
   }
 
   logout() {
-    return this.http.post(`${this.mainURL}/logout`, {}, {withCredentials: true}).pipe(map(res => res.json()), catchError(this.handleError));
+    return this.http.post(`${this.mainURL}/logout`, {}, {withCredentials: true}).pipe(map(res => {console.log('logout in sesson service'); return this.tempUser= null;}), catchError(this.handleError));
   }
 
   isLoggedIn() {
     return this.http.get(`${this.mainURL}/loggedin`, {withCredentials: true})
-    .pipe(map(res =>
-      res.json()
+    .pipe(map(res => { 
+        this.tempUser = res;
+        console.log('in sesson logged in is: ', JSON.parse(this.tempUser._body))
+        return JSON.parse(this.tempUser._body)
+      }
     ),
     catchError(this.handleError)
   );

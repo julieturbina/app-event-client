@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,48 +15,45 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  user: any = false;
+  user: any;
   error: string;
   privateData: any = '';
 
-  constructor(private session: SessionService) { }
+  constructor(private session: SessionService, private route: Router) { }
 
   ngOnInit() {
     this.session.isLoggedIn()
-      .subscribe(
-        (user) => this.successCb(user)
-      );
+    .toPromise()
+    .then(userFromApi => {
+      console.log('response in login is: ', userFromApi)
+      this.user = userFromApi;
+      // this.route.navigate(['/add'])
+    })
+    .catch( err => console.log('Error from login component: ',err))
+      // .subscribe(
+      //   (user) => this.successCb(user)
+      // );
   }
 
   login() {
     this.session.login(this.formInfo)
       .subscribe(
-        (user) => this.successCb(user),
+        (user) => {
+          console.log('am i here?????')
+          this.successCb(user);
+          this.route.navigate(['/add'])
+        },
         (err) => this.errorCb(err)
       );
   }
 
-  signup() {
-    this.session.signup(this.formInfo)
-      .subscribe(
-        (user) => this.successCb(user),
-        (err) => this.errorCb(err)
-      );
-  }
+  
 
   logout() {
     this.session.logout()
       .subscribe(
         () => this.successCb(null),
         (err) => this.errorCb(err)
-      );
-  }
-
-  getPrivateData() {
-    this.session.getPrivateData()
-      .subscribe(
-        (data) => this.privateData = data,
-        (err) => this.error = err
       );
   }
 

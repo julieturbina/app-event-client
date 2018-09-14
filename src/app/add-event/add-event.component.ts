@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FileSelectDirective, FileUploader } from "ng2-file-upload";
 import { NgModule } from '@angular/core';
+import { Router } from "@angular/router";
 import { SessionService } from "../services/session.service";
+import { FileSelectDirective, FileUploader } from "ng2-file-upload";
+import { EventService } from '../services/event.service';
+
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-add-event',
@@ -11,10 +15,7 @@ import { SessionService } from "../services/session.service";
 
 // ========= FOR TESTING NOT WORKING EFFECTIVELY =========???????????
 export class AddEventComponent implements OnInit {
-  uploader: FileUploader = new FileUploader({
-    url: `http://localhost:3000/api`, itemAlias: 'file'
-  });
-
+ 
   newEvent = {
     genre: '',
     name: '',
@@ -22,23 +23,28 @@ export class AddEventComponent implements OnInit {
     specs: []
   };
 
+  user;
+
   feedback: string = "";
 
-  constructor(private session:SessionService) { }
+  uploader = new FileUploader({
+    url: environment.BASE_URL + "/api/events",
+    itemAlias: "eventImg"
+  });
+
+  constructor(private session:SessionService, private router: Router,
+  private eventService: EventService) { }
 
   ngOnInit() {
-      this.session.isLoggedIn()
-      .subscribe(
-        (user) => console.log("LOGG = ", user)
-      );
-
-    this.uploader.onSuccessItem = (item, response) => {
-      this.feedback = JSON.parse(response).message;
-    };
-
-    this.uploader.onErrorItem = (item, response, status, headers) => {
-      this.feedback = JSON.parse(response).message;
-    };
+    this.session.isLoggedIn()
+    .toPromise()
+    .then( userFromApi => {
+      this.user = userFromApi;
+    })
+    .catch(err => {
+      this.router.navigate(['/home']);
+    })
+     
   }
 
   addSpec(spec) {
@@ -46,11 +52,63 @@ export class AddEventComponent implements OnInit {
   }
       
   submit() {
+    if (this.uploader.getNotUploadedItems().length === 0) {
+      this.saveEventNoImage();
+    } else {
+      this.saveEventWithImage();
+    }  }
+
+
+  private saveEventNoImage(){
+    console.log('event to be sent: ', this.newEvent)
+    this.eventService.createEvent(this.newEvent)
+    .toPromise()
+    .then( () => {
+      this.newEvent = {
+        genre: '',
+        name: '',
+        image: '',
+        specs: []
+      };
+      this.router.navigate(['/home'])
+    })
+    .catch( err => {
+      this.feedback = "Well, saving event with no image went bad. Sorry!";
+    })
+  }
+
+
+
+
+
+  private saveEventWithImage(){
     this.uploader.onBuildItemForm = (item, form) => {
+      console.log("=============================")
+      console.log("in onBuildItemForm - item", item);
+      console.log("in onBuildItemForm - form", form);
+      console.log("=============================");
+
       form.append('genre', this.newEvent.genre);
-      form.append('name', this.newEvent.name);
-      form.append('specs', JSON.stringify(this.newEvent.specs));
-    };
+      form.append("name", this.newEvent.name);
+      form.append("specs", this.newEvent.specs);
+    }
+    this.uploader.onSuccessItem = (item, response) =>{
+      console.log("=============================");
+      console.log("in onSuccessItem - item", item);
+      console.log("in onSuccessItem - response", response);
+      console.log("=============================");
+      this.newEvent = {
+        genre: '',
+        name: '',
+        image: '',
+        specs: []
+      };
+        this.feedback = ""
+        this.router.navigate(["/home"]);
+    }
+    this.uploader.onErrorItem = (item, response) => {
+      this.feedback = "Saving phone with image went bad. Sorry!";
+    }
     this.uploader.uploadAll();
   }
 
@@ -68,3 +126,4 @@ export class AddEventComponent implements OnInit {
   }
 
 }
+

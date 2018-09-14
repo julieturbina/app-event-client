@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { routes } from './app.routing';
 import { HttpModule } from "@angular/http";
-// import { FileUploadModule } from "ng2-file-upload"; //added recently
-
+import { FileUploadModule } from "ng2-file-upload"; //added recently
 import { FormsModule } from "@angular/forms";
 
-import { FileSelectDirective } from "ng2-file-upload";
+// import { FileSelectDirective } from "ng2-file-upload";
 
 import { SessionService } from "./services/session.service";
 import { EventService } from './services/event.service';
@@ -30,7 +29,6 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     EventListComponent,
     EventDetailComponent,
-    FileSelectDirective,
     AddEventComponent,
     SignupComponent,
     LoginComponent,
@@ -41,8 +39,10 @@ import { HomeComponent } from './home/home.component';
     RouterModule.forRoot(routes),
     FormsModule,
     HttpModule,
+    FileUploadModule,
+    // FileSelectDirective 
   ],
-  providers: [ SessionService, EventService ],  //??????EventService recent addition
+  providers: [ SessionService, EventService ],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
