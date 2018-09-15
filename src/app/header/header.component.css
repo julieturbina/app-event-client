@@ -6,6 +6,11 @@
     font-size: 30px;
   }
 
+  body {
+    font-family: 'IM Fell Double Pica', serif;
+    color: white;
+  }
+
 
 /* // Styling for the navbar */
 /* #mainNav {
