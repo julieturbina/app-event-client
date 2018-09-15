@@ -1,28 +1,21 @@
-<div class = "list">
-          <br>
-        <div class="head"></div>
-          <h1>Miami Fashion events!</h1>
-        </div>
 
-          <h1> Event list </h1>
-          <div class="card" style="width: 125rem;">
-              <div *ngFor="let event of events">
-              <div *ngIf="event.image !== ''">
-                <img class="card-img-top"  [src]="event.image" alt="Event" />
-              </div>
-                <div class="card-body">
-                <h3 class="card-title"> {{ event.genre }}&nbsp; </h3>
-                <p class="card-title"> {{ event.name }} </p>
-                <p class="card-title"> {{ event.specs }} </p>
-                <div *ngIf="user">
-                  <a [routerLink]="['/events', event._id]"> View Event Details </a>
-                </div>
-              </div>
-          </div>
-          <hr>
 
-          <h1>This is the event list end!</h1>
-          <hr>
-          <br>
-          <hr>
+<h1 class="head"> Event list </h1>
+<div class="card" style="width: 125rem;">
+    <div *ngFor="let event of events">
+    <div *ngIf="event.image !== ''">
+      <img class="card-img-top"  [src]="event.image" alt="Event" />
+    </div>
+      <div class="card-body">
+      <h3 class="card-title"> {{ event.genre }}&nbsp; </h3>
+      <p class="card-title"> {{ event.name }} </p>
+      <p class="card-title"> {{ event.specs }} </p>
+      <div *ngIf="user">
+        <a [routerLink]="['/events', event._id]"> View Event Details </a>
+      </div>
+    </div>
 </div>
+<hr>
+<hr>
+<br>
+<hr>

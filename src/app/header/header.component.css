@@ -6,8 +6,9 @@
     font-size: 30px;
   }
 
-  body {
+  .head {
     font-family: 'IM Fell Double Pica', serif;
+    font-size: 20px;
     color: white;
   }
 

@@ -7,7 +7,9 @@
 .list{
     background-color: rgb(105, 21, 223);
 }
+
 .head {
+    font-family: 'IM Fell Double Pica', serif;
+    font-size: 150px;
     color: white;
-    font-size: 80px;
-}
+  }
