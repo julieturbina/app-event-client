@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../services/event.service';
+import { SessionService } from '../services/session.service';
 
 
 @Component({
@@ -11,17 +12,25 @@ import { EventService } from '../services/event.service';
 })
 export class EventListComponent implements OnInit {
   events:any=[];
-  constructor(private event: EventService) { }
+  user: any;
+  constructor(private event: EventService, private session: SessionService) { }
 
   ngOnInit() {
-      // console.log(this.event);
-      this.event.getList()
-      .subscribe((events) => {
-        console.log('events up in the house')
-        this.events = events;
-        console.log('events from api are: ', this.events)
-      });
-    }
+    this.session.isLoggedIn()
+    .toPromise()
+    .then((userFromApi) => {
+      this.user = userFromApi;
+      console.log('user in event list : ', this.user);
+    
+    })
+    .catch( err => err.json())
+    this.event.getList()
+    .subscribe((events) => {
+      console.log('events up in the house')
+      this.events = events;
+      console.log('events from api are: ', this.events)
+    });
+    } 
   }
   
 

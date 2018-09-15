@@ -1,38 +1,48 @@
-<h1>
-  This is the event-detail start!!!!!!!!!!
-</h1> 
-<a [routerLink]="['']"> Back to list </a>
 
-<h1>This is where the event list should go!!!!!!!!!!===============</h1>
-<div *ngIf="event">
-    <div class="event-thumbnail">
-      <img height="300" [src]="event.image" />
-    </div>
+<!-- lastminute div below <div class="detail"> -->
+<div class="detail">
 
-  <div class="event-info">
-    <h2> {{ event.genre }}&nbsp;</h2>
-    <h3> {{ event.name }} </h3>
 
-    <div *ngIf="event.specs">
-      <h4> Features </h4>
-      <ul>
-        <li *ngFor="let spec of event.specs"> {{ spec&nbsp;}} </li>
-      </ul>
-    </div>
-  </div>
+          <h1>
+            This is the event-detail start!!!!!!!!!!
+          </h1> 
+          <a [routerLink]="['']"> Back to list </a>
 
-  <!-- Place the button where you like most in the template -->
-  <button (click)="deleteEvent()"> Delete </button>
-  </div>
-  <div>
-      <form (ngSubmit)="doTheUpdate(event._id, myForm)" #myForm="ngForm" >
-          <label for="event-genre-input"> Event genre </label>
-          <input id="event-genre-input" type="text"  [(ngModel)]="event.genre" name="genre" value="{{ event.genre }}">
-          <br>
-          <label for="event-name-input"> Event Name </label>
-          <input id="event-name-input" type="text"  [(ngModel)]="event.name" name="name" value="{{ event.name }}">
-          <br>
-         
-          <button type="submit">Save updates</button>
-        </form>
-</div> 
+          <h1>This is where the event list should go!!!!!!!!!!===============</h1>
+          <div *ngIf="event">
+              <div class="event-thumbnail">
+                <img height="300" [src]="event.image" />
+              </div>
+
+            <div class="event-info">
+              <h2> {{ event.genre }}&nbsp;</h2>
+              <h3> {{ event.name }} </h3>
+
+              <div *ngIf="event.specs">
+                <h4> Features </h4>
+                <ul>
+                  <li *ngFor="let spec of event.specs"> {{ spec&nbsp;}} </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Place the button where you like most in the template -->
+            <button (click)="deleteEvent()"> Delete </button>
+            </div>
+            <div>
+                <form (ngSubmit)="doTheUpdate(event._id, myForm)" #myForm="ngForm" >
+                    <label for="event-genre-input"> Event genre </label>
+                    <input id="event-genre-input" type="text"  [(ngModel)]="event.genre" name="genre" value="{{ event.genre }}">
+                    <br>
+                    <label for="event-name-input"> Event Name </label>
+                    <input id="event-name-input" type="text"  [(ngModel)]="event.name" name="name" value="{{ event.name }}">
+                    <br>
+                  
+                    <button type="submit">Save updates</button>
+                  </form>
+          </div> 
+
+
+
+
+</div>
