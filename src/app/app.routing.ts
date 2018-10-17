@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     {path: 'signup', component: SignupComponent},
-    // {path: 'login', component: LoginComponent},
+    {path: 'login', component: LoginComponent},
     {path: 'home', component:  HomeComponent},
     { path: 'add', component: AddEventComponent},
     { path: 'list', component: EventListComponent},
